@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Projet Robot STAR WARS</title>
+    <link rel="stylesheet" href="css hackaton.css" />
+</head>
+<body>
+
+<nav class="starwars-nav">
+    <ul>
+        <li><a href="#ingenieurs">Ingénieurs</a></li>
+        <li><a href="#moodboard">Moodboard</a></li>
+        <li><a href="#recherche">Travail de recherche</a></li>
+        <li><a href="#communication">Outil de communication</a></li>
+        <li><a href="#journal">Journal de bord</a></li>
+        <li><a href="#materiel">Matériel</a></li>
+        <li><a href="#code">Code Arduino</a></li>
+        <li><a href="#problemes">Problématiques</a></li>
+        <li><a href="#groupe">Notre Groupe</a></li>
+        <li><a href="#ressources">Ressources</a></li>
+    </ul>
+</nav>
+
+<header>
+    <div class="logo-titre">
+        <img src="logo4.png" alt="Logo Star Wars">
+        <h1>AT ATN6</h1>
+    </div>
+    <p>J'offre les croissants</p>
+</header>
+
+<main>
+    <h2 id="ingenieurs">Ingénieurs</h2>
+    <div class="personnages">
+        <div class="personnage"><img src="Nolwenn.png" alt="Nolwenn"><p>Nolwenn</p></div>
+        <div class="personnage"><img src="julian_jedi.png" alt="Julian"><p>Jullian</p></div>
+        <div class="personnage"><img src="cinthia_renegate.png" alt="Cinthia"><p>Cinthia</p></div>
+        <div class="personnage"><img src="Lea_dolorian.png" alt="Léa"><p>Léa</p></div>
+    </div>
+
+    <div class="moodboard">
+        <h2 id="moodboard">Moodboard</h2>
+        <img src="moodboard.png" alt="Moodboard Robot Star Wars">
+    </div>
+    <h4>La moodboard du projet pour illustrer notre travail d'équipe</h4>
+
+    <h2 id="recherche">Travail de recherche</h2>
+    <div class="maquette">
+        <img src="maquette.jpg" alt="Maquette du robot">
+        <img src="3axis.png" alt="3 Axis">
+    </div>
+    <h4>La première maquette du projet / Le modèle de la maquette sur le site 3Axis</h4>
+
+    <h2 id="communication">Outil de communication</h2>
+    <div class="trello">
+        <img src="trello.png" alt="Trello">
+    </div>
+     <h4>Ci-dessus le site "Trello", outil collaboratif qui permet de hierarchiser l'avancement des différentes tâches</h4>
+
+    <section class="journal">
+        <h2 id="journal">Journal de bord</h2>
+        <div class="jours">
+            <div class="jour"><h3>Jour 1</h3><p>Composition des groupes / cartes mentale / dessin pour illustrer nos idées</p></div>
+            <div class="jour"><h3>Jour 2</h3><p>Choix du modèle de robot (AT-AT) / Réalisation d'un schéma / commencement du site web / commencement du montage Arduino / modification des dimensions du plan du robot </p></div>
+            <div class="jour"><h3>Jour 3</h3><p>Création d'une maquette en carton / réalisation des avatars / modification des dimensions du plan du robot </p></div>
+            <div class="jour"><h3>Jour 4</h3><p>Recherche de modèle de sabre laser / Montage de la maquette en carton / Re faire les dimensions du robot pour faire rentrer la carte arduino</p></div>
+            <div class="jour"><h3>Jour 5</h3><p>Topo pechu / Découpe laser / derniers réglages de conceptions</p></div>
+            <div class="jour"><h3>Jour 6</h3><p>Montage Robot / Test Robot / Peinture Robot</p></div>
+            <div class="jour"><h3>Jour 7</h3><p>Gros combat de robot la / BBQ DE FOU</p></div>
+        </div>
+    </section>
+
+    <section class="materiel">
+        <h2 id="materiel">Matériel</h2>
+        <div class="prbl">
+            <ul>
+                <li>Arduino Uno</li>
+                <li>Servomoteurs</li>
+                <li>Potentiomètres</li>
+                <li>Batterie LiPo</li>
+                <li>Carton</li>
+                <li>Bois de bois</li>
+                <li>câbles</li>
+                <li>Haut-parleur</li>
+                <li>Buzzer</li>
+                <li>Bouton</li>
+            </ul>
+        </div>
+        <div class="grid-groupe">
+            <img src="montage arduino.jpg" alt="Photo 1">
+            <img src="materiel 1.jpg" alt="Photo 2">
+            <img src="maquette en carton.jpg" alt="Photo 3">
+            <img src="Materiel 2.jpg" alt="Photo 4">
+        </div>
+    </section>
+
+    <section class="code">
+        <h2 id="code">Code Arduino</h2>
+        <pre><code>
+
+            #include <Servo.h>
+
+
+                // Definit les broches pour les servo-moteurs
+                
+                const int servoPin1 = 7;
+                
+                const int servoPin2roue = 6;
+                
+                const int servoPin3 = 5;
+                
+                
+                // Definit les broches pour les potentiomètres
+                
+                const int potPin1 = A0;
+                
+                const int potPin2 = A1;
+                
+                const int potPin3 = A2;
+                
+                
+                // Crée des objets Servo pour les servo-moteurs
+                
+                Servo servo1;
+                
+                Servo servo2;
+                
+                Servo servo3;
+                
+                
+                void setup() {
+                
+                  // Initialise les servo-moteurs
+                
+                  servo1.attach(servoPin1);
+                
+                  servo2.attach(servoPin2roue);
+                
+                  servo3.attach(servoPin3);
+                
+                }
+                
+                
+                void loop() {
+                
+                  // Lit les valeurs des potentiomètres
+                
+                  int angle1 = map(analogRead(potPin1), 0, 1023, 0, 180);
+                
+                  int angle2 = map(analogRead(potPin2), 0, 1023, 0, 180);
+                
+                  int angle3 = map(analogRead(potPin3), 0, 1023, 0, 180);
+                
+                
+                  // Déplace les servo-moteurs aux positions spécifiées par les potentiomètres
+                
+                  servo1.write(angle1);
+                
+                  delay(15); // Ajout d'un délai de 15 millisecondes
+                
+                  servo2.write(angle2);
+                
+                  delay(50); // Ajout d'un délai de 15 millisecondes
+                
+                  servo3.write(angle3);
+                
+                  delay(15); // Ajout d'un délai de 15 millisecondes
+                }
+                
+        </code></pre>
+    </section>
+
+    <section class="problemes">
+        <h2 id="problemes">Problématiques</h2>
+        <div class="prbl">
+            <ol>
+                <li>Se mettre d'accord sur le modèle du robot Star Wars</li>
+                <li>Gérer le problème de place sur le robot et ses dimensions</li>
+                <li>Comprendre comment marchent les haut-parleurs</li>
+                <li>Gérer les tâches dans l'équipe</li>
+                <li>Re faire les dimensions du robot pour faire rentrer la carte Arduino</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="galerie">
+        <h2 id="groupe">Notre Groupe en Action</h2>
+        <div class="grid-groupe">
+            <img src="groupe.jpg" alt="Photo 1">
+            <img src="groupe 2.jpg" alt="Photo 2">
+            <img src="groupe  3.jpg" alt="Photo 3">
+            <img src="groupe 4.jpg" alt="Photo 4">
+        </div>
+    </section>
+
+    <h2 id="ressources">Ressources</h2>
+    <div class="prbl">
+        <ol>
+            <li>https://electroniqueamateur.blogspot.com/2015/07/brancher-un-haut-parleur-larduino.html</li>
+            <li>https://pixel77.com/star-wars-font/</li>
+            <li>https://3axis.co/download/eo4y45go/</li>
+            <li>https://www.youtube.com/watch?app=desktop&v=DJ1KKICP65E</li>
+            <li>https://www.thingiverse.com/thing:2853535</li>
+            <li>https://www.digikey.fr/fr/resources/conversion-calculators/conversion-calculator-resistor-color-code</li>
+        </ol>
+    </div>
+</main>
+
+<footer>
+    <div class="Basdepage">
+        <ul>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Nos autres projets</a></li>
+            <li><a href="#">Bisous</a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>
